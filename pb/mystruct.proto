@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package pb;
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message MyMessage {
+  bytes my_custom_field = 1 [(gogoproto.customtype) = "MyCustomField"];
+}
+
+message SayHelloResponse {
+  string message = 1;
+}
+
+service Greeting {
+  rpc SayHello(MyMessage) returns (SayHelloResponse) {}
+}
